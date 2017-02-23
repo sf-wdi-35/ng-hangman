@@ -61,6 +61,7 @@ HangmanGame.prototype.wordSoFar = function() {
 HangmanGame.prototype.isWinner = function() {
   if(this.triesRemaining === 0) {
     this.gameWon = false;
+    this.completedWord = this.secretWord
   // user wins if there are no more underscores in word
 } else if( !this.isLetterInWord("_", this.completedWord) ) {
     this.gameWon = true;

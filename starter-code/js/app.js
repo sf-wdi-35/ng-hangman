@@ -1,20 +1,22 @@
-
 // initialize the application
 angular
   .module("hangmanApp", [])
   .controller("hangmanCtrl", hangmanCtrl)
 
+
 function hangmanCtrl(){
+
+  var word = words[Math.floor(Math.random() * words.length)]
 
   var vm = this;
 
-  vm.newGame = new HangmanGame(prompt("pick a word"));
+  this.newGame = new HangmanGame(word);
 
   this.guess;
 
   this.glyph;
 
-  vm.guessLetter = function(){
+  this.guessLetter = function(){
     this.newGame.guess(this.guess);
     this.guess = null;
     if(this.newGame.gameWon){
