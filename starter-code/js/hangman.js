@@ -1,4 +1,3 @@
-console.log('hangmanGame loaded');
 
 // HangmanGame
 // to use:
@@ -17,7 +16,6 @@ var HangmanGame = function(secretWord, tries) {
 HangmanGame.prototype.guess = function(guess) {
   // don't continue if the game is over
   if (this.gameWon !== null) {
-    console.log("the game is over");
     return false;
   }
   // check if the letter has already been guessed
@@ -28,14 +26,11 @@ HangmanGame.prototype.guess = function(guess) {
     this.guesses.push(guess);
     // can't add a letter if the game has already been lost
   } else if (this.gameWon === false) {
-    console.log("you have already lost the game");
   } else {
-    console.log("this letter has already been guessed")
     return this.isWinner();
   }
   // determine if letter is in word
   if (this.isLetterInWord(guess, this.secretWord)) {
-    console.log('found ' + guess + ' in the word: ', this.secretWord);
   } else {
     this.triesRemaining--;
   }
@@ -65,11 +60,9 @@ HangmanGame.prototype.wordSoFar = function() {
 // determines win/lose status
 HangmanGame.prototype.isWinner = function() {
   if(this.triesRemaining === 0) {
-    console.log("Sorry, you loose.")
     this.gameWon = false;
   // user wins if there are no more underscores in word
 } else if( !this.isLetterInWord("_", this.completedWord) ) {
-    console.log("Yay, you win!")
     this.gameWon = true;
   } else {
     this.gameWon = null;
