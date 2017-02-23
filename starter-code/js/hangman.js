@@ -1,4 +1,4 @@
-console.log('hangmanGame loaded');
+//console.log('hangmanGame loaded');
 
 // HangmanGame
 // to use:
@@ -43,6 +43,7 @@ HangmanGame.prototype.guess = function(guess) {
   return this.isWinner();
 };
 
+
 //////////////////////
 // Helper functions //
 //////////////////////
@@ -79,5 +80,5 @@ HangmanGame.prototype.isWinner = function() {
 // returns true if the letter is in the word, false if not
 HangmanGame.prototype.isLetterInWord = function(guess, word) {
   // determine if the letter is in the word
-  return word.split('').indexOf(guess) > -1;
+  console.log(word.split('').indexOf(guess) > -1);  
 };
