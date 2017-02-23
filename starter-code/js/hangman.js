@@ -4,13 +4,22 @@ console.log('hangmanGame loaded');
 // to use:
 // 1. var game = new HangmanGame('supersecretword');
 // 2. game.guess('t');
-var HangmanGame = function(secretWord, tries) {
-  this.secretWord = secretWord;
+var HangmanGame = function(tries) {
+  this.secretWord = prompt("Pick a Word!");
   this.input = "";
+  this.glyph = "";
   this.guesses = [];
   this.triesRemaining = tries || 7;
   this.completedWord = this.wordSoFar();
   this.gameWon = null;
+  this.reset = function(){
+    this.secretWord = prompt("word");
+    this.input = "";
+    this.guesses = [];
+    this.triesRemaining = tries || 7;
+    this.completedWord = this.wordSoFar();
+    this.gameWon = null;
+  }
 };
 
 // user can guess a letter
@@ -20,6 +29,7 @@ HangmanGame.prototype.guess = function(guess) {
     console.log("the game is over");
     return false;
   }
+  console.log(this.gameWon)
   // check if the letter has already been guessed
   var alreadyGuessed = this.guesses.indexOf(guess) !== -1;
   // only add unique letters
@@ -35,7 +45,7 @@ HangmanGame.prototype.guess = function(guess) {
   }
   // determine if letter is in word
   if (this.isLetterInWord(guess, this.secretWord)) {
-    console.log('found ' + guess + ' in the word: ', this.secretWord);
+    // console.log('found ' + guess + ' in the word: ', this.secretWord);
   } else {
     this.triesRemaining--;
   }
