@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="hangmanApp">
 
 <head>
   <title>Hangman Game</title>
@@ -12,21 +12,21 @@
 </head>
 
 <body class="full-background">
-<div class='container' id="container" ng-controller="hangmanCtrl">
+<div class='container' id="container" ng-controller="Hangman as forca">
   <div id='poor-soul' class='row'>
     <pre class='col-md-6 col-md-offset-3'>
 _________
-|/      |                               _
-|      (_)       __ _ _ __   __ _ _   _| | __ _ _ __
-|      \|/      / _` | '_ \ / _` | | | | |/ _` | '__|
-|       |      | (_| | | | | (_| | |_| | | (_| | |
-|      / \      \__,_|_| |_|\__, |\__,_|_|\__,_|_|
-|                           |___/
+|/      |       _
+|      (_)     | | _   _   __ _ ___   _
+|      \|/     | || | | | / _` |   \ | |
+|       |      | || \_/ || (_| | |\ \| |
+|      / \     |_| \___/  \__,_|_| \___|
+|                  
 |___                                        hang-man
 
     </pre>
     <div class='col-sm-12 col-md-6 col-md-offset-3 text-center'>
-      ? tries remaining
+      {{ forca.hangman.triesRemaining }} tries remaining
     </div>
   </div>
   <div class='row'>
@@ -34,7 +34,7 @@ _________
       <span class="label label-default">SOLVING:</span>
     </div>
     <div class='col-sm-12 text-center'>
-      <span class='wide'></span>
+      <span class='wide'>{{ forca.hangman.completedWord }}</span>
     </div>
   </div>
 
@@ -43,6 +43,7 @@ _________
       <span class="label label-default">GUESSES: </span>
     </div>
     <div class='col-sm-12 text-center' id='guesses'>
+      <span ng-repeat="prevGuess in forca.hangman.guesses"> {{ prevGuess }} |</span>
     </div>
   </div>
 
@@ -51,12 +52,12 @@ _________
       <span class="label label-default">INPUT:</span>
     </div>
     <div class="col-sm-12 text-center">
-      <input type='text' size='1' id='guess'>
+      <input ng-model="forca.hangman.input" ng-change="forca.guessLetter(forca.hangman.input)" type='text' size='1' id='guess'>
     </div>
   </div>
   <div class='row' id='statuses'>
     <div class='col-sm-1 table small-font'>Win status:
-      <span class='glyphicon'></span>
+      <span class='glyphicon' ng-class="forca.hangman.gameWon ? 'glyphicon-ok' : 'glyphicon-remove'"></span>
     </div>
   </div>
 </div>
