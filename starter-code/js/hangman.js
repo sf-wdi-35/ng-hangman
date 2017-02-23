@@ -4,6 +4,9 @@ console.log('hangmanGame loaded');
 // to use:
 // 1. var game = new HangmanGame('supersecretword');
 // 2. game.guess('t');
+
+
+
 var HangmanGame = function(secretWord, tries) {
   this.secretWord = secretWord;
   this.input = "";
