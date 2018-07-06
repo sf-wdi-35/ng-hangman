@@ -9,3 +9,12 @@ body { font-size: 32px; }
   font-size: 14px;
   vertical-align: middle;
 }
+
+.jumbotron {
+  color: #eee;
+  background-color: #000708;
+}
+
+.jumbotron .container {
+  height: 350px;
+}

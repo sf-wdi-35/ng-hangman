@@ -2,9 +2,9 @@
   "name": "client",
   "homepage": "https://github.com/sf-wdi-25/angular_hangman_lab",
   "authors": [
-    "Ilias Tsangaris <iliastsangaris@gmail.com>"
+    "Yan Yin Choy"
   ],
-  "description": "",
+  "description": "hang-man game with AngularJS",
   "main": "",
   "moduleType": [],
   "license": "MIT",
